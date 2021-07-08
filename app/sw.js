@@ -21,7 +21,7 @@ async function update(request) {
     if (hasMatch) return cache;
     const response = await fetch(request)
     if (response) {
-        cache.put(request, response.clone());
+        await cache.put(request, response.clone());
         return response;
     }
 }
