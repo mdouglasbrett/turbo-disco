@@ -10,14 +10,36 @@
   <script type="module" src="/js/deps.js"></script>
   <link rel="modulepreload" href="/js/index.js"/>
   <script type="module" src="/js/index.js"></script>
+  <script type="module">
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("/sw.js").then(
+          (registration) => {
+            // Registration was successful
+            console.log("ServiceWorker registration successful, scope: ", registration.scope);
+          },
+          err => {
+            // registration failed :(
+            console.log("ServiceWorker registration failed: ", err);
+          }
+        );
+      });
+    }
+  </script>
 </head>
 <body>
 <header>
+  <nav>
+    <li>
+      <a href="/">Home</a>
+    </li>
+  </nav>
   <h1>Simple To-Do</h1>
 </header>
 <main>
   <todo-list></todo-list>
-  <create-button></create-button>
+<!--  TODO: pretty routes -->
+  <a href="/create.html">Create</a>
 </main>
 </body>
 </html>
