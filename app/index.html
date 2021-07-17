@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en_GB">
+<html lang="en-GB">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, initial-scale=1.0, maximum-scale=6.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Home</title>
-  <link rel="icon" href="favicon-32x32.png" />
+  <link rel="icon" href="favicon-32x32.png"/>
   <link rel="modulepreload" href="/js/deps.js"/>
   <script type="module" src="/js/deps.js"></script>
   <link rel="modulepreload" href="/js/index.js"/>
@@ -31,15 +31,17 @@
 <body>
 <header>
   <nav>
-    <li>
-      <a href="/">Home</a>
-    </li>
+    <ul>
+      <li>
+        <a href="/">Home</a>
+      </li>
+    </ul>
   </nav>
   <h1>Simple To-Do</h1>
 </header>
 <main>
   <todo-list></todo-list>
-<!--  TODO: pretty routes -->
+  <!--  TODO: pretty routes -->
   <a href="/create.html">Create</a>
 </main>
 </body>
