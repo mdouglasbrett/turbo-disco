@@ -66,6 +66,7 @@ app.use(async (context) => {
   await send(context, context.request.url.pathname, {
     root: `${Deno.cwd()}/app`,
     index: "index.html",
+    extensions: ["html"]
   });
 });
 
