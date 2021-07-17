@@ -40,11 +40,18 @@ async function precache() {
     return cache.addAll([
         '/',
         '/favicon-32x32.png',
-        './create.html',
-        './edit.html',
+        './create',
+        './edit',
         '/js/deps.js',
         '/js/index.js',
         '/js/modules/ToDoList.js',
         '/styles/index.css',
+        'https://cdn.skypack.dev/pin/dexie@v3.0.3-c3n0iJSdyDHeMevyDHVi/mode=imports,min/optimized/dexie.js',
+        'https://cdn.skypack.dev/-/dexie@v3.0.3-c3n0iJSdyDHeMevyDHVi/dist=es2020,mode=imports,min/optimized/dexie.js',
+        'https://cdn.skypack.dev/pin/lit-element@v2.5.1-kJPqOtXnmU3W5UnUzeF9/mode=imports,min/optimized/lit-element.js',
+        'https://cdn.skypack.dev/-/lit-element@v2.5.1-kJPqOtXnmU3W5UnUzeF9/dist=es2020,mode=imports,min/optimized/lit-element.js',
+        'https://cdn.skypack.dev/-/lit-html@v1.4.1-oent33n0grd4QLhM138d/dist=es2020,mode=imports,min/optimized/lit-html.js',
+        'https://cdn.skypack.dev/-/lit-html@v1.4.1-oent33n0grd4QLhM138d/dist=es2020,mode=imports,min/optimized/lit-html/lit-html.js'
+
     ]);
 }

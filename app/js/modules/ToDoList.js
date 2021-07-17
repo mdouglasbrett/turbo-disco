@@ -1,6 +1,14 @@
-import {html, LitElement} from "../deps.js";
+import {html, css, LitElement} from "../deps.js";
 
 export class ToDoList extends LitElement {
+    static get styles() {
+        return css`
+          li {
+            list-style: none;
+          }
+        `
+    }
+
     _handleChange() {
         return console.log("changed input state");
     }
@@ -19,14 +27,14 @@ export class ToDoList extends LitElement {
                 Item One
               </label>
               <!--        TODO: pretty routes -->
-              <a href="/edit.html">Edit</a>
+              <a href="/edit">Edit</a>
             </li>
             <li>
               <label for="checkbox-2">
                 <input type="checkbox" name="checkbox-2" id="checkbox-2"/>
                 Item Two
               </label>
-              <a href="/edit.html">Edit</a>
+              <a href="/edit">Edit</a>
             </li>
           </ul>`;
     }
