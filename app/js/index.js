@@ -3,3 +3,6 @@ import { ToDoList } from "./modules/ToDoList.js";
 
 customElements.define("todo-list", ToDoList);
 // customElements.define("create-button", CreateButton);
+
+function createToDo() {}
+function editToDo() {}

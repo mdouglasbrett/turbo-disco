@@ -72,7 +72,9 @@
     }
   </style>
   <link rel="preload" href="styles/index.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="styles/index.css"></noscript>
+  <noscript>
+    <link rel="stylesheet" href="styles/index.css">
+  </noscript>
 </head>
 <body>
 <header>
@@ -86,12 +88,28 @@
   <h1>Create Todo</h1>
 </header>
 <main>
-  <form>
-    <label for="todo-title">Title</label>
-    <input id="todo-title" name="todo-title" type="text" placeholder="Todo title goes here"/>
-    <label for="todo-notes">Notes</label>
-    <input type="text" id="todo-notes" placeholder="You can add any notes here">
+  <form id="create-todo">
+    <label for="title">Title</label>
+    <input id="title" name="title" type="text" placeholder="Todo title goes here"/>
+    <label for="notes">Notes</label>
+    <!--    This should be a textarea -->
+    <input type="text" id="notes" name="notes" placeholder="You can add any notes here"/>
+    <input type="submit" value="Submit" />
   </form>
 </main>
+<script type="module">
+  var createForm = document.getElementById("create-todo");
+  createForm.addEventListener("submit", createToDo)
+
+  function createToDo(event) {
+    event.preventDefault();
+    const data = new FormData(createForm)
+    var toDo = {};
+    for (let [k, v] of data.entries()) {
+      toDo[k] = v;
+    }
+    console.log({toDo})
+  }
+</script>
 </body>
 </html>
