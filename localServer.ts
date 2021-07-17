@@ -9,11 +9,7 @@ import {
   yellow,
 } from "https://deno.land/std@0.91.0/fmt/colors.ts";
 
-import {
-  Application,
-  HttpError,
-  send
-} from "https://deno.land/x/oak/mod.ts";
+import { Application, HttpError, send } from "https://deno.land/x/oak/mod.ts";
 
 const app = new Application();
 
@@ -45,11 +41,9 @@ app.use(async (context, next) => {
   await next();
   const rt = context.response.headers.get("X-Response-Time");
   console.log(
-    `${green(context.request.method)} ${cyan(context.request.url.pathname)} - ${
-      bold(
-        String(rt),
-      )
-    }`,
+    `${green(context.request.method)} ${cyan(
+      context.request.url.pathname
+    )} - ${bold(String(rt))}`
   );
 });
 
@@ -66,7 +60,7 @@ app.use(async (context) => {
   await send(context, context.request.url.pathname, {
     root: `${Deno.cwd()}/app`,
     index: "index.html",
-    extensions: ["html"]
+    extensions: ["html"],
   });
 });
 
