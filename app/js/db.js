@@ -1,3 +1,5 @@
+// TODO: I am going to have to use importScripts here rather than raw `import`
+
 self.addEventListener("message", handleWorkerMessage);
 
 function handleWorkerMessage(message) {
