@@ -45,6 +45,7 @@ async function precache() {
     "./edit",
     "/js/deps.js",
     "/js/index.js",
+    "/js/db.js",
     "/js/modules/ToDoList.js",
     "/styles/index.css",
     "https://cdn.skypack.dev/pin/dexie@v3.0.3-c3n0iJSdyDHeMevyDHVi/mode=imports,min/optimized/dexie.js",
