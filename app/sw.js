@@ -39,6 +39,7 @@ async function precache() {
     const cache = await caches.open(CACHE);
     return cache.addAll([
         '/',
+        '/favicon-32x32.png',
         './create.html',
         './edit.html',
         '/js/deps.js',
