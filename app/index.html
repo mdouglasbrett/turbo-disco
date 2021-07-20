@@ -11,11 +11,19 @@
   <meta name="theme-color" content="#fff">
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" href="favicon-32x32.png" />
-  <link rel="preconnect" href="https://cdn.skypack.dev">
-  <link rel="modulepreload" href="js/deps.js" />
-  <script type="module" src="js/deps.js"></script>
-  <link rel="modulepreload" href="js/index.js" />
-  <script type="module" src="js/index.js"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- [2] -->
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;700&display=swap" />
+
+  <!-- [3] -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;700&display=swap"
+    media="print" onload="this.media='all'" />
+
+  <!-- [4] -->
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;700&display=swap" />
+  </noscript>
   <script type="module">
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", async function serviceWorkerRegistration() {
@@ -32,6 +40,9 @@
       });
     }
   </script>
+  <link rel="preconnect" href="https://cdn.skypack.dev">
+  <link rel="modulepreload" href="js/modules/ToDoList.js" />
+  <script type="module" src="js/modules/ToDoList.js"></script>
   <style>
     /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
@@ -168,6 +179,103 @@
       border-collapse: collapse;
       border-spacing: 0;
     }
+
+    :root {
+      --font-family: "Work Sans", sans-serif;
+      --primary-100: #241B3A;
+      --primary-200: #35304C;
+      --primary-300: #4C4860;
+      --primary-400: #615D73;
+      --primary-500: #8E8A99;
+      --primary-600: #B7B4BE;
+      --primary-700: #F7F8F8;
+      --primary-800: #211B3A;
+      --accent-100: rgba(255, 68, 56, 1);
+      --accent-200: rgba(255, 68, 56, 0.9);
+      --accent-300: rgba(255, 68, 56, 0.66);
+      --accent-400: rgba(255, 68, 56, 0.15);
+      --grey-100: #908D9C;
+      --grey-200: #BCBBC4;
+      --grey-300: #D2D1D7;
+      --grey-400: #E9E8EB;
+      --grey-500: rgba(255, 255, 255, 0.9);
+      --grey-600: #4C4860;
+      --gradient: linear-gradient(to top, #211B3A 0%, #211B3A 60%, rgba(33, 27, 58, 0.8) 100%);
+      --whiteTop: linear-gradient(to bottom, #fff 0px, #fff 22rem, #241B3A 10rem, #241B3A 100%);
+      --mobileWhiteTop: linear-gradient(to bottom, #fff 0px, #fff 11rem, #241B3A 5rem, #241B3A 100%);
+      --darkTop: linear-gradient(to bottom, #241B3A 0px, #241B3A 22rem, #fff 10rem, #fff 100%);
+      --mobileDarkTop: linear-gradient(to bottom, #241B3A 0px, #241B3A 11rem, #fff 5rem, #fff 100%);
+      --minimumDarkTop: linear-gradient(to bottom, #241B3A 0px, #241B3A 5rem, #fff 2rem, #fff 100%);
+      --greyWhiteTop: linear-gradient(to bottom, #fff 0px, #fff 22rem, #F7F8F8 10rem, #F7F8F8 100%);
+      --mobileGreyWhiteTop: linear-gradient(to bottom, #fff 0px, #fff 11rem, #F7F8F8 5rem, #F7F8F8 100%);
+      --greyDarkTop: linear-gradient(to bottom, #F7F8F8 0px, #F7F8F8 22rem, #fff 10rem, #fff 100%);
+      --mobileGreyDarkTop: linear-gradient(to bottom, #F7F8F8 0px, #F7F8F8 11rem, #fff 5rem, #fff 100%);
+      --black: #000;
+      --white: #fff;
+    }
+
+    *+* {
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      padding: 0;
+      margin: 0;
+      font-family: var(--font-family);
+      display: grid;
+      grid-template-columns: 1em 1fr 1em;
+      grid-template-rows: auto 1fr;
+      grid-row-gap: 1em;
+      grid-template-areas:
+        ". header ."
+        ". list .";
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      grid-area: header;
+      padding: .5em 0;
+    }
+
+    h1 {
+      color: var(--primary-800);
+      padding: 0;
+      margin: 0;
+      line-height: 1;
+    }
+
+    .logo-wrapper {
+      display: inline-grid;
+      align-items: center;
+      grid-gap: .5em;
+      grid-template-columns: repeat(2, max-content);
+      text-decoration: none;
+    }
+
+    .logo-wrapper+span {
+      font-size: 2em;
+    }
+
+    #app {
+      grid-area: list;
+    }
+
+    .list-container {
+      display: grid;
+      grid-template-columns: 4fr 1fr;
+      grid-template-rows: 1fr auto 1em;
+      height: 100%;
+    }
+
+    .list-message {
+      display: grid;
+      grid-column: 1 / 3;
+      grid-row: 1 / 2;
+      place-items: center;
+    }
   </style>
   <link rel="preload" href="styles/index.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript>
@@ -186,10 +294,10 @@
     </nav>
     <h1>Simple To-Do</h1>
   </header>
-  <main>
+  <main id="app">
     <todo-list></todo-list>
     <!--  TODO: pretty routes -->
-    <a href="/create">Create</a>
+    <a href="/create" class="button--primary action">Create</a>
   </main>
 </body>
 

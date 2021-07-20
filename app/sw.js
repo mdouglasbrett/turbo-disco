@@ -44,8 +44,6 @@ async function precache() {
     "/favicon-32x32.png",
     "/create",
     "/edit",
-    "/js/deps.js",
-    "/js/index.js",
     "/js/db.js",
     "/js/utils.js",
     "/js/modules/ToDoList.js",
