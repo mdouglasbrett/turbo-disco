@@ -1,4 +1,4 @@
-// TODO: I am going to have to use importScripts here rather than raw `import`
+import Dexie from "https://cdn.skypack.dev/pin/dexie@v3.0.3-c3n0iJSdyDHeMevyDHVi/mode=imports,min/optimized/dexie.js";
 
 self.addEventListener("message", handleWorkerMessage);
 
