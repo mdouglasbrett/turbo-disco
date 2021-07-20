@@ -11,10 +11,15 @@
   <meta name="theme-color" content="#fff" />
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" href="favicon-32x32.png" />
-  <link rel="modulepreload" href="js/deps.js" />
-  <script type="module" src="js/deps.js"></script>
-  <link rel="modulepreload" href="js/index.js" />
-  <script type="module" src="js/index.js"></script>
+  <link rel="modulepreload" href="js/db.js" />
+  <script type="module">
+    import { handleFormSubmit, handleWorkerMessage } from "/js/utils.js"
+    var dbWorker = new Worker("/js/db.js", { type: "module" });
+    var createForm = document.getElementById("create-todo");
+    var createToDo = handleFormSubmit({ form: createForm, worker: dbWorker, actionType: "createToDo" });
+    createForm.addEventListener("submit", createToDo);
+    dbWorker.addEventListener("message", handleWorkerMessage);
+  </script>
   <style>
     /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
@@ -179,14 +184,6 @@
       <input type="submit" value="Submit" />
     </form>
   </main>
-  <script type="module">
-    import { handleFormSubmit, handleWorkerMessage } from "/js/utils.js"
-    var dbWorker = new Worker("/js/db.js");
-    var createForm = document.getElementById("create-todo");
-    var createToDo = handleFormSubmit({ form: createForm, worker: dbWorker, actionType: "createToDo" });
-    createForm.addEventListener("submit", createToDo);
-    dbWorker.addEventListener("message", handleWorkerMessage);
-  </script>
 </body>
 
 </html>
