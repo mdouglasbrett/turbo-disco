@@ -1,6 +1,10 @@
-import { css, html, LitElement } from "../deps.js";
+import {
+  css,
+  html,
+  LitElement,
+} from "https://cdn.skypack.dev/pin/lit-element@v2.5.1-kJPqOtXnmU3W5UnUzeF9/mode=imports,min/optimized/lit-element.js";
 
-export class ToDoList extends LitElement {
+class ToDoList extends LitElement {
   static get styles() {
     return css`
       li {
@@ -14,7 +18,10 @@ export class ToDoList extends LitElement {
   }
 
   render() {
-    return html` <ul>
+    return html` 
+    <div class="list-container">
+    <ul class="list">
+      <!-- TODO: these should be dynamic -->
       <li>
         <label for="checkbox-1">
           <input
@@ -35,6 +42,9 @@ export class ToDoList extends LitElement {
         </label>
         <a href="/edit">Edit</a>
       </li>
-    </ul>`;
+    </ul>
+    </div>`;
   }
 }
+
+customElements.define("todo-list", ToDoList);
