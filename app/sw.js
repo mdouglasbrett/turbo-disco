@@ -6,7 +6,7 @@ self.addEventListener("install", function (evt) {
     precache().then(function () {
       console.log("Immediate claim");
       return self.skipWaiting();
-    })
+    }),
   );
 });
 
@@ -40,12 +40,14 @@ async function precache() {
   const cache = await caches.open(CACHE);
   return cache.addAll([
     "/",
+    "/manifest.json",
     "/favicon-32x32.png",
-    "./create",
-    "./edit",
+    "/create",
+    "/edit",
     "/js/deps.js",
     "/js/index.js",
     "/js/db.js",
+    "/js/utils.js",
     "/js/modules/ToDoList.js",
     "/styles/index.css",
     "https://cdn.skypack.dev/pin/dexie@v3.0.3-c3n0iJSdyDHeMevyDHVi/mode=imports,min/optimized/dexie.js",
