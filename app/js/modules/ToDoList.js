@@ -1,4 +1,4 @@
-import { html, css, LitElement } from "../deps.js";
+import { css, html, LitElement } from "../deps.js";
 
 export class ToDoList extends LitElement {
   static get styles() {

@@ -1,9 +1,11 @@
-# To-do List 
+# To-do List
+
 A single page todo app with local and offline storage
 
 ## Get Started
 
-This application uses Deno for local development. To install, follow the instructions here:
+This application uses Deno for local development. To install, follow the
+instructions here:
 
 [https://deno.land/#installation](https://deno.land/#installation)
 
