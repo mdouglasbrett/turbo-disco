@@ -1,34 +1,34 @@
 <!doctype html>
 <html lang="en-GB">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=6.0, minimum-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=6.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Home</title>
   <meta name="description" content="An offline-ready ToDo List application">
   <meta name="robots" content="noindex">
   <meta name="theme-color" content="#fff">
-  <link rel="manifest" href="manifest.json"/>
-  <link rel="icon" href="favicon-32x32.png"/>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="favicon-32x32.png" />
   <link rel="preconnect" href="https://cdn.skypack.dev">
-  <link rel="modulepreload" href="js/deps.js"/>
+  <link rel="modulepreload" href="js/deps.js" />
   <script type="module" src="js/deps.js"></script>
-  <link rel="modulepreload" href="js/index.js"/>
+  <link rel="modulepreload" href="js/index.js" />
   <script type="module" src="js/index.js"></script>
   <script type="module">
     if ("serviceWorker" in navigator) {
-      window.addEventListener("load", () => {
-        navigator.serviceWorker.register("/sw.js").then(
-          (registration) => {
+      window.addEventListener("load", async function serviceWorkerRegistration() {
+        try {
+          var registration = await navigator.serviceWorker.register("/sw.js")
+          if (registration) {
             // Registration was successful
             console.log("ServiceWorker registration successful, scope: ", registration.scope);
-          },
-          err => {
-            // registration failed :(
-            console.log("ServiceWorker registration failed: ", err);
           }
-        );
+        } catch (e) {
+          // registration failed :(
+          console.log("ServiceWorker registration failed: ", err);
+        }
       });
     }
   </script>
@@ -38,19 +38,87 @@
    License: none (public domain)
 */
 
-    html, body, div, span, applet, object, iframe,
-    h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-    a, abbr, acronym, address, big, cite, code,
-    del, dfn, em, img, ins, kbd, q, s, samp,
-    small, strike, strong, sub, sup, tt, var,
-    b, u, i, center,
-    dl, dt, dd, ol, ul, li,
-    fieldset, form, label, legend,
-    table, caption, tbody, tfoot, thead, tr, th, td,
-    article, aside, canvas, details, embed,
-    figure, figcaption, footer, header, hgroup,
-    menu, nav, output, ruby, section, summary,
-    time, mark, audio, video {
+    html,
+    body,
+    div,
+    span,
+    applet,
+    object,
+    iframe,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    blockquote,
+    pre,
+    a,
+    abbr,
+    acronym,
+    address,
+    big,
+    cite,
+    code,
+    del,
+    dfn,
+    em,
+    img,
+    ins,
+    kbd,
+    q,
+    s,
+    samp,
+    small,
+    strike,
+    strong,
+    sub,
+    sup,
+    tt,
+    var,
+    b,
+    u,
+    i,
+    center,
+    dl,
+    dt,
+    dd,
+    ol,
+    ul,
+    li,
+    fieldset,
+    form,
+    label,
+    legend,
+    table,
+    caption,
+    tbody,
+    tfoot,
+    thead,
+    tr,
+    th,
+    td,
+    article,
+    aside,
+    canvas,
+    details,
+    embed,
+    figure,
+    figcaption,
+    footer,
+    header,
+    hgroup,
+    menu,
+    nav,
+    output,
+    ruby,
+    section,
+    summary,
+    time,
+    mark,
+    audio,
+    video {
       margin: 0;
       padding: 0;
       border: 0;
@@ -60,8 +128,17 @@
     }
 
     /* HTML5 display-role reset for older browsers */
-    article, aside, details, figcaption, figure,
-    footer, header, hgroup, menu, nav, section {
+    article,
+    aside,
+    details,
+    figcaption,
+    figure,
+    footer,
+    header,
+    hgroup,
+    menu,
+    nav,
+    section {
       display: block;
     }
 
@@ -69,16 +146,20 @@
       line-height: 1;
     }
 
-    ol, ul {
+    ol,
+    ul {
       list-style: none;
     }
 
-    blockquote, q {
+    blockquote,
+    q {
       quotes: none;
     }
 
-    blockquote:before, blockquote:after,
-    q:before, q:after {
+    blockquote:before,
+    blockquote:after,
+    q:before,
+    q:after {
       content: '';
       content: none;
     }
@@ -89,23 +170,27 @@
     }
   </style>
   <link rel="preload" href="styles/index.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="styles/index.css"></noscript>
+  <noscript>
+    <link rel="stylesheet" href="styles/index.css">
+  </noscript>
 </head>
+
 <body>
-<header>
-  <nav>
-    <ul>
-      <li>
-        <a href="/">Home</a>
-      </li>
-    </ul>
-  </nav>
-  <h1>Simple To-Do</h1>
-</header>
-<main>
-  <todo-list></todo-list>
-  <!--  TODO: pretty routes -->
-  <a href="/create">Create</a>
-</main>
+  <header>
+    <nav>
+      <ul>
+        <li>
+          <a href="/">Home</a>
+        </li>
+      </ul>
+    </nav>
+    <h1>Simple To-Do</h1>
+  </header>
+  <main>
+    <todo-list></todo-list>
+    <!--  TODO: pretty routes -->
+    <a href="/create">Create</a>
+  </main>
 </body>
+
 </html>
